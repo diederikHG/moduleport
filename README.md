@@ -5,3 +5,12 @@
 3. clone the repo: ``git clone https://github.com/diederikHG/moduleport.git``
 4. the git repo is cloned!
 5. add your github account as local user: ``git config user.email "diederik.depourcq.j2625@student.hogent.be"``
+
+# Before you start making changes
+1. have Git bash in the root of your git repo
+
+# After you made changes
+1. have Git bash in the root of your git repo
+
+# Add and commit the changes
+1. have Git bash in the root of your git repo
