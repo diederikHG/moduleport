@@ -8,6 +8,12 @@
 
 # Before you start making changes
 1. have Git bash in the root of your git repo
+2. check if there were remote changes by fetching the remote information first: ``git fetch``
+3. now that we have the remote information, check if there were changes: ``git status``
+4. if your master is behind, we have to pull the updates: ``git pull``
+5. if we check now, our master branch is up to date: ``git status``
+6. now we can start working on the repo
+7. when you've made the changes, check again for updates
 
 # After you made changes
 1. have Git bash in the root of your git repo
