@@ -2,4 +2,4 @@ name: 'Scroll to top'
 description: 'Scroll to top module.'
 core: 8.x
 configure: scroll_to_top.form
-Type: module
+type: module
