@@ -15,7 +15,7 @@
         // building the style for preview
         var style="<style>#scroll-to-top-prev-container #back-top-prev span#button-prev{ background-color:"+$("#edit-scroll-to-top-bg-color-out").val()+";} #scroll-to-top-prev-container #back-top-prev span#button-prev:hover{ background-color:"+$("#edit-scroll-to-top-bg-color-hover").val()+" }</style>"
         // building the html content of preview
-        var html="<p id='back-top-prev' style='position:relative;'><a href='#top'><span id='button-prev'></span><span id='link'>";
+        var html="<p id='back-top-prev' style='position:relative;'><a href='#top'><span id='button-prev'></span><span id='preview-link'>";
         // if label enabled display it
         if($("#edit-scroll-to-top-display-text").prop('checked')){
           html+=$("#edit-scroll-to-top-label").val();

@@ -12,6 +12,14 @@ use Drupal\Core\Form\FormStateInterface;
 
 class ScrollToTopForm extends ConfigFormBase{
 
+  /**
+   * {@inheritdoc}
+   */
+  protected function getEditableConfigNames() {
+    return [
+        'scroll_to_top.settings'
+    ];
+  }
 
   /**
   * {@inheritdoc}
@@ -42,21 +50,18 @@ class ScrollToTopForm extends ConfigFormBase{
           ),
           '#default_value' => $config->get('scroll_to_top_position'),
       );
+
       $form['scroll_to_top_bg_color_hover'] = array(
           '#type' => 'color',
           '#title' => $this->t('Background color on mouse over.'),
           '#description' => $this->t('Button background color on mouse over default #777777'),
           '#default_value' => $config->get('scroll_to_top_bg_color_hover'),
-          '#size' => 10,
-          '#maxlength' => 7,
       );
       $form['scroll_to_top_bg_color_out'] = array(
           '#type' => 'color',
           '#title' => $this->t('Background color on mouse out.'),
           '#description' => $this->t('Button background color on mouse over default #CCCCCC'),
           '#default_value' => $config->get('scroll_to_top_bg_color_out'),
-          '#size' => 10,
-          '#maxlength' => 7,
       );
       $form['scroll_to_top_display_text'] = array(
           '#type' => 'checkbox',

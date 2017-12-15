@@ -44,8 +44,11 @@ function scroll_to_top_preprocess_page(&$variables) {
         $css .= $bgcolor;
         $css .= $display;
 
-        $variables['#attached']['js'][] = array('type' => 'setting', 'data' => array('label' => t($config->get('scroll_to_top_label'))));
+        $variables['#attached']['html_head'][] = [[
+            '#tag' => 'style',
+            '#value' => '.'.$css.'',
+        ], 'scroll_to_top_new_css'];
 
-        $variables['#attached']['css'][] = array('data' => $css, 'type' => 'inline');
+        $variables['#attached']['drupalSettings']['scroll_to_top']['label'] = $config->get( 'scroll_to_top_label');
     }
 }

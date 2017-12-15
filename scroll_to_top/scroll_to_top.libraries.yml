@@ -3,7 +3,9 @@ scroll_to_top:
   js:
     js/scroll_to_top.js: {}
   css:
-    css/scroll_to_top.css: {}
+    theme:
+      css/scroll_to_top.css: {}
   dependencies:
     - core/jquery
     - core/drupalSettings
+
