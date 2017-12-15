@@ -76,4 +76,28 @@ class ScrollToTopForm extends ConfigFormBase{
 
       return parent::buildForm($form, $form_state);
   }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function submitForm(array $form, FormStateInterface $form_state){
+      parent::submitForm($form, $form_state);
+
+      $label = $form_state->getValue('scroll_to_top_label');
+      $position = $form_state->getValue('scroll_to_top_position');
+      $bg_color_hover = $form_state->getValue('scroll_to_top_bg_color_hover');
+      $bg_color_out = $form_state->getValue('scroll_to_top_bg_color_out');
+      $display_text = $form_state->getValue('scroll_to_top_display_text');
+      $enable_admin_theme = $form_state->getValue('scroll_to_top_enable_admin_theme');
+
+      $config = $this->config('scroll-to_top.settings');
+
+      $config->set('scroll_to_top_label', $label)
+          ->set('scroll_to_top_position',$position)
+          ->set('scroll_to_top_bg_color_hover',$bg_color_hover)
+          ->set('scroll_to_top_bg_color_out',$bg_color_out)
+          ->set('scroll_to_top_display_text',$display_text)
+          ->set('scroll_to_top_enable_admin_theme',$enable_admin_theme)
+          ->save();
+  }
 }
