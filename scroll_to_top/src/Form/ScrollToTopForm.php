@@ -2,7 +2,7 @@
 
 /**
 * @file
-* Contains \Drupal\scroll_to_top\ScrollToTopForm
+* Contains Drupal\scroll_to_top\Form\ScrollToTopForm
 */
 
 namespace Drupal\scroll_to_top\Form;
@@ -11,6 +11,8 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 class ScrollToTopForm extends ConfigFormBase{
+
+
   /**
   * {@inheritdoc}
   */
@@ -25,7 +27,7 @@ class ScrollToTopForm extends ConfigFormBase{
           '#type' => 'textfield',
           '#title' => $this->t('Label'),
           '#description' => $this->t('label displayed in scroll to top link, default "Back to top".'),
-          '#default_value' => $config->ge$this->t('scroll_to_top_label'),
+          '#default_value' => $this->t($config->get('scroll_to_top_label')),
           '#size' => 10,
       );
 
@@ -38,13 +40,13 @@ class ScrollToTopForm extends ConfigFormBase{
               2 => $this->t('left'),
               3 => $this->t('middle'),
           ),
-          '#default_value' => $config->ge$this->t('scroll_to_top_position'),
+          '#default_value' => $config->get('scroll_to_top_position'),
       );
       $form['scroll_to_top_bg_color_hover'] = array(
           '#type' => 'color',
           '#title' => $this->t('Background color on mouse over.'),
           '#description' => $this->t('Button background color on mouse over default #777777'),
-          '#default_value' => $config->ge$this->t('scroll_to_top_bg_color_hover'),
+          '#default_value' => $config->get('scroll_to_top_bg_color_hover'),
           '#size' => 10,
           '#maxlength' => 7,
       );
@@ -52,7 +54,7 @@ class ScrollToTopForm extends ConfigFormBase{
           '#type' => 'color',
           '#title' => $this->t('Background color on mouse out.'),
           '#description' => $this->t('Button background color on mouse over default #CCCCCC'),
-          '#default_value' => $config->ge$this->t('scroll_to_top_bg_color_out'),
+          '#default_value' => $config->get('scroll_to_top_bg_color_out'),
           '#size' => 10,
           '#maxlength' => 7,
       );
@@ -60,13 +62,13 @@ class ScrollToTopForm extends ConfigFormBase{
           '#type' => 'checkbox',
           '#title' => $this->t('Display label'),
           '#description' => $this->t('Display "BACK TO TOP" text under the button'),
-          '#default_value' => $config->ge$this->t('scroll_to_top_display_text'),
+          '#default_value' => $config->get('scroll_to_top_display_text'),
       );
       $form['scroll_to_top_enable_admin_theme'] = array(
           '#type' => 'checkbox',
           '#title' => $this->t('Enable on administration theme.'),
           '#description' => $this->t('Enable scroll to top button on administartion theme.'),
-          '#default_value' => $config->ge$this->t('scroll_to_top_enable_admin_theme'),
+          '#default_value' => $config->get('scroll_to_top_enable_admin_theme'),
       );
       $form['scroll_to_top_preview'] = array(
           '#type' => 'item',
@@ -80,7 +82,8 @@ class ScrollToTopForm extends ConfigFormBase{
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array $form, FormStateInterface $form_state){
+  public function submitForm(array &$form, FormStateInterface $form_state){
+
       parent::submitForm($form, $form_state);
 
       $label = $form_state->getValue('scroll_to_top_label');
@@ -90,7 +93,7 @@ class ScrollToTopForm extends ConfigFormBase{
       $display_text = $form_state->getValue('scroll_to_top_display_text');
       $enable_admin_theme = $form_state->getValue('scroll_to_top_enable_admin_theme');
 
-      $config = $this->config('scroll-to_top.settings');
+      $config = $this->config('scroll_to_top.settings');
 
       $config->set('scroll_to_top_label', $label)
           ->set('scroll_to_top_position',$position)

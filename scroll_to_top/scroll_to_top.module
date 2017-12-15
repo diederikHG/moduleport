@@ -6,9 +6,9 @@
  */
 
 /**
- * Implementation of hook_init().
+ * Implementatie hook_init().
  */
-function scroll_to_top_preprocess_page($variables) {
+function scroll_to_top_preprocess_page(&$variables) {
 
     $theme = \Drupal::theme()->getActiveTheme()->getName();
     $admin_theme = \Drupal::config('system.theme')->get('admin');
@@ -24,11 +24,11 @@ function scroll_to_top_preprocess_page($variables) {
         //building the css style
         $position = "";
         // Button position
-        if ($config->get('scroll_to_top_position')==1) {
+        if ($config->get('scroll_to_top_position',1)==1) {
             $position = "#back-top { right:40px; }";
         }
         if ($config->get('scroll_to_top_position')==3) {
-            $position = "#back-top { left:50%;margin:0px;}";
+            $position = $position = "#back-top { left:50%;margin:0px;}";
         }
         // Display label
         if ($config->get('scroll_to_top_display_text')==FALSE) {
@@ -38,8 +38,8 @@ function scroll_to_top_preprocess_page($variables) {
             $display = "";
         }
         // background color on hover
-        $bgcolor = "#back-top span#button { background-color: " . $config->get('scroll_to_top_bg_color_out', '#CCCCCC') . ";}";
-        $bgcolor .= " #back-top span#button:hover {opacity:1;filter:alpha(opacity = 1);background-color: " . $config->get('scroll_to_top_bg_color_hover', '#777777') . ";}";
+        $bgcolor = "#back-top span#button { background-color: " . $config->get('scroll_to_top_bg_color_out') . ";}";
+        $bgcolor .= " #back-top span#button:hover {opacity:1;filter:alpha(opacity = 1);background-color: " . $config->get('scroll_to_top_bg_color_hover') . ";}";
         $css = $position;
         $css .= $bgcolor;
         $css .= $display;
